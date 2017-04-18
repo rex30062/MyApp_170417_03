@@ -11,6 +11,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
     ImageView img, img2;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         img=(ImageView)findViewById(R.id.imageView);
+        img2=(ImageView)findViewById(R.id.imageView2);
         RequestQueue queue= Volley.newRequestQueue(MainActivity.this);
         ImageRequest request=new ImageRequest("https://uc.udn.com.tw/photo/2017/04/10/1/3379440.jpg", new Response.Listener<Bitmap>() {
             @Override
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         });
         queue.add(request);
         queue.start();
+
+        Picasso.with(MainActivity.this).load("https://uc.udn.com.tw/photo/2017/04/10/1/3379440.jpg").into(img2);
 
     }
 }
